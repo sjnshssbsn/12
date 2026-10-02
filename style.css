@@ -1,0 +1,20 @@
+h1
+{
+    color: red;
+}
+
+.circle-border
+{
+    width: 10em;
+    border: 1px solid red;
+    border-radius: 50%;
+}
+
+.background-style 
+{
+  background-image: url('photo-1622310505762-a813a1c2e0bf.avif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
