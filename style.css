@@ -3,6 +3,20 @@ h1
     color: red;
 }
 
+html
+{
+    margin:  0;
+    padding: 0;
+    scrollbar-width: none;
+}
+
+body
+{
+    margin:  0;
+    padding: 0;
+    height: 300vh;
+}
+
 .circle-border
 {
     width: 10em;
@@ -10,11 +24,9 @@ h1
     border-radius: 50%;
 }
 
-.background-style 
+#avatar
 {
-  background-image: url('photo-1622310505762-a813a1c2e0bf.avif');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-        }
+    bottom:   2em;
+    left:     2em;
+    position: fixed;
+}
