@@ -24,13 +24,23 @@ body
     border-radius: 50%;
 }
 
+.face-right
+{
+    scale: -1 1;
+}
+
 #avatar
 {
     bottom:   2em;
     left:     2em;
     position: fixed;
+
+    animation: bobbing 1s ease-in-out infinite alternate;
 }
 
-.face-right {
-    scale: -1 1;
+@keyframes bobbing
+{
+    from { transform: translateY(0); }
+    to   { transform: translateY(-10px); }
 }
+
