@@ -14,7 +14,11 @@ body
 {
     margin:  0;
     padding: 0;
-    height: 300vh;
+    background-image: 
+        url(avatar.avif),
+        url(backround.avif);
+        width: auto;
+    height: 100vh;
 }
 
 .circle-border
