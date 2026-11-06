@@ -15,10 +15,11 @@ body
     margin:  0;
     padding: 0;
     background-image: 
-        url(avatar.avif),
-        url(backround.avif);
-        width: auto;
-    height: 100vh;
+        url("images/avatar.avif"),
+        url("images/backround.avif");
+    background-repeat: repeat-x;
+    background-size: auto 100vh;
+    background-attachment: fixed;
 }
 
 .circle-border
@@ -57,6 +58,5 @@ section
 {
     width: 100vw;
     height: 100vh;
-    background-size: cover;
     flex-shrink: 0;
 }

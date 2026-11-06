@@ -2,17 +2,30 @@ const avatar = document.getElementById("avatar");
 const root   = document.documentElement;
 var pastProgress = 0;
 
+const paralaxSpeeds = [0.65, 0.35];
+
 document.addEventListener("scroll", (event) =>
 {
-    var positionY = window.scrollY;
-    var maxHeight = root.scrollHeight - window.innerHeight;
-    var maxWidth  = window.innerWidth - avatar.offsetWidth;
-    var progress  = (positionY / maxHeight) * maxWidth;
+    var positionX   = window.scrollX;
+    var screenWidth = root.scrollWidth - window.innerWidth;
+    var maxWidth    = window.innerWidth - avatar.offsetWidth;
+    var progress    = (positionX / screenWidth) * maxWidth;
 
     if (progress < pastProgress)
         avatar.classList.remove("face-right");
     else if (progress > pastProgress)
         avatar.classList.add("face-right");
+
+    var layerPositions = "";
+    for (var i = 0; i < paralaxSpeeds.length; i++)
+    {
+        if (i > 0)
+            layerPositions += ", ";
+
+        layerPositions += (-positionX * paralaxSpeeds[i]) + "px";
+    }
+
+    document.body.style.backgroundPositionX = layerPositions;
 
     avatar.style.left = progress + "px";
 
