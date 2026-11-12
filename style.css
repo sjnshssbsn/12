@@ -14,8 +14,9 @@ body
 {
     margin:  0;
     padding: 0;
-    background-image: 
-        url("images/background-2.jpg"),
+    background-image:
+        url("images/layer-clouds.png"),
+        url("images/background.avif"),
         url("images/avatar.avif"),
         url("images/background-2.jpg");
     background-repeat: repeat-x;
