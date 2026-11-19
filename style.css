@@ -1,64 +1,78 @@
-h1
-{
-    color: red;
+* {
+  box-sizing: border-box;
 }
 
-html
-{
-    margin:  0;
-    padding: 0;
-    scrollbar-width: none;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }
 
-body
-{
-    margin:  0;
-    padding: 0;
-    background-image:
-        url("images/layer-clouds.png"),
-        url("images/background.avif"),
-        url("images/avatar.avif"),
-        url("images/background-2.jpg");
-    background-repeat: repeat-x;
-    background-size: auto 100vh;
-    background-attachment: fixed;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
-.circle-border
-{
-    width: 10em;
-    border: 1px solid red;
-    border-radius: 50%;
+body {
+  background-image:
+    url("images/background-2.png"),
+    url("images/layer-clouds.png"),
+    url("images/background.avif");
+  background-repeat: repeat-x;
+  background-size: auto 100vh;
+  background-position: 0 bottom, 0 top, 0 center;
+  background-attachment: fixed;
 }
 
-.face-right
-{
-    scale: -1 1;
+h1 {
+  color: red;
 }
 
-#avatar
-{
-    bottom:   2em;
-    left:     2em;
-    position: fixed;
-
-    animation: bobbing 1s ease-in-out infinite alternate;
+#avatar-wrapper {
+  position: fixed;
+  bottom: 2em;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+  will-change: transform;
 }
 
-@keyframes bobbing
-{
-    from { transform: translateY(0); }
-    to   { transform: translateY(-10px); }
+.circle-border {
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
+  border: 2px solid red;
+  border-radius: 50%;
+  display: block;
 }
 
-main 
-{
-    display: flex;
+.face-right {
+  scale: -1 1;
 }
 
-section
-{
-    width: 100vw;
-    height: 100vh;
-    flex-shrink: 0;
+#avatar {
+  transition: scale 0.15s ease;
+  animation: bobbing 1s ease-in-out infinite alternate;
+}
+
+@keyframes bobbing {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+main {
+  display: flex;
+}
+
+section {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  padding: 2rem;
 }

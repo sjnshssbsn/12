@@ -1,45 +1,72 @@
+const avatarWrapper = document.getElementById("avatar-wrapper");
 const avatar = document.getElementById("avatar");
-const root   = document.documentElement;
-var pastProgress = 0;
+const root = document.documentElement;
 
-const paralaxSpeeds = [0.65, 0.35];
+let pastProgress = 0;
+let ticking = false;
 
-document.addEventListener("scroll", (event) =>
-{
-    var positionX   = window.scrollX;
-    var screenWidth = root.scrollWidth - window.innerWidth;
-    var maxWidth    = window.innerWidth - avatar.offsetWidth;
-    var progress    = (positionX / screenWidth) * maxWidth;
+// Скорости от преден към заден слой: дървета, облаци, основен фон
+const parallaxSpeeds = [0.65, 0.35, 0.1];
 
-    if (progress < pastProgress)
-        avatar.classList.remove("face-right");
-    else if (progress > pastProgress)
-        avatar.classList.add("face-right");
+function updateScene() {
+  const positionX = window.scrollX;
+  const screenWidth = root.scrollWidth - window.innerWidth;
+  const maxWidth = window.innerWidth - avatarWrapper.offsetWidth;
+  const progress = screenWidth > 0 ? (positionX / screenWidth) * maxWidth : 0;
 
-    var layerPositions = "";
-    for (var i = 0; i < paralaxSpeeds.length; i++)
-    {
-        if (i > 0)
-            layerPositions += ", ";
+  if (progress < pastProgress) {
+    avatar.classList.remove("face-right");
+  } else if (progress > pastProgress) {
+    avatar.classList.add("face-right");
+  }
 
-        layerPositions += (-positionX * paralaxSpeeds[i]) + "px";
+  const layerPositions = parallaxSpeeds
+    .map((speed) => `${-positionX * speed}px`)
+    .join(", ");
+
+  document.body.style.backgroundPositionX = layerPositions;
+  avatarWrapper.style.transform = `translate3d(${progress}px, 0, 0)`;
+
+  pastProgress = progress;
+  ticking = false;
+}
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScene);
+      ticking = true;
     }
+  },
+  { passive: true }
+);
 
-    document.body.style.backgroundPositionX = layerPositions;
+// Преобразува вертикалното въртене на мишката в хоризонтално скролване
+window.addEventListener(
+  "wheel",
+  (event) => {
+    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+      window.scrollBy({
+        left: event.deltaY,
+        behavior: "auto",
+      });
+    }
+  },
+  { passive: true }
+);
 
-    avatar.style.left = progress + "px";
+// Навигация със стрелките на клавиатурата
+document.addEventListener("keydown", (event) => {
+  const step = window.innerWidth;
 
-    pastProgress = progress;
+  if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+    window.scrollBy({ left: -step, behavior: "smooth" });
+  } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+    window.scrollBy({ left: step, behavior: "smooth" });
+  }
 });
 
-document.addEventListener("keydown", (event) =>
-{
-    if ((event.key === "ArrowLeft") || (event.key === "ArrowUp"))
-    {
-        console.log("Go left");
-    }
-    if ((event.key === "ArrowRight") || (event.key === "ArrowDown"))
-    {
-        console.log("Go right");
-    }
-});
+// Начално позициониране при зареждане и преоразмеряване на прозореца
+window.addEventListener("resize", updateScene);
+updateScene();

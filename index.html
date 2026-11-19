@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>
-      Kristians portfolio
-    </title>
-    <link href="style.css" rel="stylesheet"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kristian's Portfolio</title>
+    <link href="style.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/a127a92184.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <img class="circle-border" id="avatar" src="images/avatar.avif" alt="image avatar"/>
+    <div id="avatar-wrapper">
+      <img
+        class="circle-border"
+        id="avatar"
+        src="images/avatar.avif"
+        alt="Kristian avatar"
+        decoding="async"
+      />
+    </div>
 
     <main>
-
       <section id="about-me">
+        <h1>Kristian Ellingboe</h1>
         <h2>About me</h2>
-        <h3>Kristian Ellingboe</h3>
-        <p>
-          Information about me.
-        </p>
+        <p>Information about me.</p>
       </section>
 
       <section id="skills">
@@ -34,23 +39,20 @@
       <section id="projects">
         <h2>Projects</h2>
         <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JS</li>
-          <li>Else</li>
+          <li>Project 1</li>
+          <li>Project 2</li>
+          <li>Project 3</li>
         </ul>
       </section>
 
       <section id="contacts">
-        <h2>Chat me:</h2>
+        <h2>Chat with me:</h2>
         <ul>
-          <li><i class="fa-brands fa-github-alt"></i></li>
-          <li>CSS</li>
-          <li>JS</li>
-          <li>Else</li>
+          <li><i class="fa-brands fa-github-alt"></i> GitHub</li>
+          <li>Email</li>
+          <li>LinkedIn</li>
         </ul>
       </section>
-
     </main>
 
     <script src="helper.js"></script>
