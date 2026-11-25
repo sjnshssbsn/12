@@ -18,8 +18,10 @@ body::-webkit-scrollbar {
 body {
   background-image:
     url("images/layer-clouds.png"),
+    url("images/layer-sky.png");
     url("images/background-2.jpg"),
     url("images/backround.avif");
+    
   background-repeat: repeat-x;
   background-size: auto 100vh;
   background-position: 0 bottom, 0 top, 0 center;
