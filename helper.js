@@ -5,7 +5,6 @@ const root = document.documentElement;
 let pastProgress = 0;
 let ticking = false;
 
-// Скорости от преден към заден слой: дървета, облаци, основен фон
 const parallaxSpeeds = [0.65, 0.35, 0.1];
 
 function updateScene() {
@@ -42,7 +41,6 @@ window.addEventListener(
   { passive: true }
 );
 
-// Преобразува вертикалното въртене на мишката в хоризонтално скролване
 window.addEventListener(
   "wheel",
   (event) => {
@@ -56,7 +54,6 @@ window.addEventListener(
   { passive: true }
 );
 
-// Навигация със стрелките на клавиатурата
 document.addEventListener("keydown", (event) => {
   const step = window.innerWidth;
 
@@ -67,6 +64,5 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Начално позициониране при зареждане и преоразмеряване на прозореца
 window.addEventListener("resize", updateScene);
 updateScene();
